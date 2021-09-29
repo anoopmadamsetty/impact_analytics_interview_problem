@@ -37,18 +37,18 @@ def is_valid(s):
 
 def prob_absent_and_allowed(n):
     """Returns 'Answer of (2) / Answer of (1)'."""
-    allowed = set()
-    not_allowed = set()
-    absent_at_graduation = set()
+    allowed = 0
+    not_allowed = 0
+    absent_at_graduation = 0
     for i in range(2**n):
         b = '{:0{}b}'.format(i, n)
         if is_valid(b):
             if b[-1] == '0':
-                absent_at_graduation.add(b)
-            allowed.add(b)
+                absent_at_graduation += 1
+            allowed += 1
         else:
-            not_allowed.add(b)
-    return str(len(absent_at_graduation)) + "/" + str(len(allowed)) + " / " + str(len(allowed))
+            not_allowed += 1
+    return str(absent_at_graduation) + "/" + str(allowed) + " / " + str(allowed)
 
 
 if __name__ == "__main__":
